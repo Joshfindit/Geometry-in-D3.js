@@ -139,6 +139,55 @@ function polyFromPointsFilled (arrayOfPolyPointsToFill, colour) {
   return filledPoly;
 }
 
+function hexToRgba(hex, alpha) {
+  
+  // Not my origional. If you find the author, please let me know so they can be credited
+
+  // Note: d3 includes colour handling such as:
+  // d3.rgb(hex) = an object with r:, g:, and b:
+  // d3.rgb("#c0c0c0") = mt: mt
+  //                       b: 192
+  //                       g: 192
+  //                       r: 192
+  //                       __proto__: ot
+  // d3.rgb("#c0c0c0").toString() = #c0c0c0
+  
+  
+  
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  var toString = function () {
+    if (this.alpha == undefined) {
+      return "rgb(" + this.r + ", " + this.g + ", " + this.b + ")";
+    }
+    if (this.alpha > 1) {
+      this.alpha = 1;
+    } else if (this.alpha < 0) {
+      this.alpha = 0;
+    }
+    return "rgba(" + this.r + ", " + this.g + ", " + this.b + ", " + this.alpha + ")";
+  }
+  if (alpha == undefined) {
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16),
+      toString: toString
+    } : null;
+  }
+  if (alpha > 1) {
+    alpha = 1;
+  } else if (alpha < 0) {
+    alpha = 0;
+  }
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+    alpha: alpha,
+    toString: toString
+  } : null;
+}
+
 function grid(width, height, divisor, strokeWidth) {
   // Brute force method for drawing a grid
   // Possible improvements:
