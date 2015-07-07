@@ -98,3 +98,43 @@ function pointsOnACircle (whichpoint, numberOfPoints, point, radius) {
   return thisPointScaled;
 
 }
+
+function polyFromPoints (arrayOfPolyPoints, colour) {
+  //Takes an array of points, and creates a closed polygon that joins them (in order)
+  if (typeof colour == 'undefined'){
+    colour = "black";
+  }
+  var myPoly = drawing.selectAll("drawing")
+  .data([arrayOfPolyPoints])
+  .enter().append("polygon")
+  .attr("points",function(d) {
+    return d.map(function(d) {
+      return [d.attr("cx"), d.attr("cy")].join(",");
+    }).join(" ");
+  })
+  .attr("stroke", colour)
+  .attr("stroke-width",.5)
+  .attr("fill", "none");
+
+  return myPoly;
+}
+
+function polyFromPointsFilled (arrayOfPolyPointsToFill, colour) {
+  //Takes an array of points, and creates a closed polygon that joins them (in order)
+  if (typeof colour == 'undefined'){
+    colour = "black";
+  }
+  filledPoly = drawing.selectAll("drawing")
+  .data([arrayOfPolyPointsToFill])
+  .enter().append("polygon")
+  .attr("points",function(d) {
+    return d.map(function(d) {
+      return [d.attr("cx"), d.attr("cy")].join(",");
+    }).join(" ");
+  })
+  .attr("stroke","none")
+  .attr("stroke-width", .5)
+  .attr("fill", colour);
+
+  return filledPoly;
+}
