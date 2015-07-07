@@ -4,11 +4,21 @@
 function point(centreX, centreY, label) {
   // Allows creating a point with a centre and a label.
   // reduces var A = {cx:80, cy:160, label:"A"}; to A = new point( 80, 160, "A");
-  this.cx = centreX;
-  this.cy = centreY;
-  this.label = label;
-}
+  // Some debate about this method: The ideal method would not 'draw' a circle
+  // Also, it's more convenient to write A.cx instead of A.attr("cx")
 
+  myPoint = drawing.append("circle")
+  .classed('point', true)
+  .style("stroke", "none")
+  .style("fill", "none")
+  .attr("r", 0)
+  .attr("cx", parseInt(centreX))
+  .attr("cy", parseInt(centreY))
+  .attr("label", label)
+
+
+  return myPoint
+}
 
 function pointArray(centreX, centreY, label, array) {
   // Allows creating a point with a centre and a label.
