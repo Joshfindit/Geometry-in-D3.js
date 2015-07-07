@@ -1,5 +1,5 @@
 //Functions
-const scale = 1000000000;
+var scale = 1000000000;
 
 function point(centreX, centreY, label) {
   // Allows creating a point with a centre and a label.
@@ -15,7 +15,6 @@ function point(centreX, centreY, label) {
   .attr("cx", parseInt(centreX))
   .attr("cy", parseInt(centreY))
   .attr("label", label)
-
 
   return myPoint
 }
@@ -140,7 +139,7 @@ function polyFromPointsFilled (arrayOfPolyPointsToFill, colour) {
 }
 
 function hexToRgba(hex, alpha) {
-  
+
   // Not my origional. If you find the author, please let me know so they can be credited
 
   // Note: d3 includes colour handling such as:
@@ -151,9 +150,9 @@ function hexToRgba(hex, alpha) {
   //                       r: 192
   //                       __proto__: ot
   // d3.rgb("#c0c0c0").toString() = #c0c0c0
-  
-  
-  
+
+
+
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   var toString = function () {
     if (this.alpha == undefined) {
