@@ -73,16 +73,28 @@ function circleFilled (point, radius, colour){
   return myFilledCircle;
 }
 
-function pointsOnACircle (whichpoint, numberOfPoints, cx, cy, radius) {
+function pointsOnACircle (whichpoint, numberOfPoints, point, radius) {
   //Returns a point along the outside of a circle, starting at (whichpoint=1) = 0 degress
-  //Could be simpler, but ran in to problems when debugging: Adding all points to an array filled the array with a single point
+  //Could be simpler and return an array containing all points, but ran in to problems when debugging: Adding all points to an array filled the array with a single point
+  //Edited to introduce a scale, which should help with rounding errors
 
   //Normally used with:
   //       for (var i = 1; i < (numberOfPoints+1); i++) {
   //           pointsOnACircleArray[pointsOnACircleArray.length] = new pointsOnACircle (i, numberOfPoints, cx, cy, radius);
   //       }
+  eachpoint = whichpoint * 2 * Math.PI /numberOfPoints;
 
-  eachpoint = whichpoint * 2 * Math.PI/numberOfPoints;
-  this.cx = cx+radius*Math.sin(eachpoint);
-  this.cy = cy-radius*Math.cos(eachpoint);
+  //var thisPoint = new point (cx + (radius * Math.sin(eachpoint)), cy - (radius * Math.cos(eachpoint)))
+  // ^ without scaling
+  //  var scale = 1000000000; //defined globally
+  var eachpoint = (whichpoint * 2 * Math.PI /numberOfPoints);
+  //We don't want to scale eachpoint
+
+  var cxScaled = point.attr("cx") * scale;
+  var cyScaled = point.attr("cy") * scale;
+  var radiusScaled = radius * scale;
+
+  var thisPointScaled = new point (Math.round(cxScaled + (radiusScaled * Math.sin(eachpoint))) / scale, Math.round(cyScaled - (radiusScaled * Math.cos(eachpoint))) /scale);
+  return thisPointScaled;
+
 }
