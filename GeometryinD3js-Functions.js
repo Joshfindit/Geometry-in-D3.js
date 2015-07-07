@@ -1,5 +1,5 @@
 //Functions
-
+const scale = 1000000000;
 
 function point(centreX, centreY, label) {
   // Allows creating a point with a centre and a label.
