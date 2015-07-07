@@ -12,8 +12,8 @@ function point(centreX, centreY, label) {
   .style("stroke", "none")
   .style("fill", "none")
   .attr("r", 0)
-  .attr("cx", parseInt(centreX))
-  .attr("cy", parseInt(centreY))
+  .attr("cx", centreX)
+  .attr("cy", centreY)
   .attr("label", label)
 
   return myPoint
