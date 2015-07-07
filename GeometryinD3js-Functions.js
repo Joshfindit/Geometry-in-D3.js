@@ -138,3 +138,88 @@ function polyFromPointsFilled (arrayOfPolyPointsToFill, colour) {
 
   return filledPoly;
 }
+
+function grid(width, height, divisor, strokeWidth) {
+  // Brute force method for drawing a grid
+  // Possible improvements:
+  // -Is there a Built-in function for D3 that will accomplish this?
+  // -Ability to label the lines with numbers
+
+  if (typeof strokeWidth == 'undefined'){
+    strokeWidth = 0.5;
+  }
+
+  for (var i = 0; i < (divisor + 1); i++) {
+    var myLine = drawing.append("svg:line")
+    //Draw the horizontal grid
+    .attr("x1", width / divisor * i)
+    .attr("y1", 0)
+    .attr("x2", width / divisor * i)
+    .attr("y2", height)
+    .attr("stroke-width",strokeWidth)
+    .attr("class","horizontalGrid")
+    .style("stroke", "rgb(0,0,50)");
+  }
+
+  for (var i = 0; i < (divisor + 1); i++) {
+    //Draw the vertical grid
+    var myLine = drawing.append("svg:line")
+    .attr("y1", height / divisor * i)
+    .attr("x1", 0)
+    .attr("y2", height / divisor * i)
+    .attr("x2", width)
+    .attr("stroke-width",strokeWidth)
+    .style("class", "veriticalGrid")
+    .style("stroke", "rgb(0,0,50)");
+  }
+}
+
+function gridFromCentrePoint(point, width, height, divisor, strokeWidth) {
+  if (typeof strokeWidth == 'undefined'){
+    strokeWidth = 0.5;
+  }
+
+  for (var i = 0; i < ((divisor / 2) + 1); i++) {
+    var myLine = drawing.append("svg:line")
+    //x to the left
+    .attr("x1", parseInt(point.attr("cx")) - (width / divisor * i))
+    .attr("y1", 0)
+    .attr("x2", parseInt(point.attr("cx")) - (width / divisor * i))
+    .attr("y2", height)
+    .attr("stroke-width",strokeWidth)
+    .style("stroke", "rgb(0,0,50)");
+  }
+
+  for (var i = 1; i < ((divisor / 2) + 1); i++) {
+    var myLine = drawing.append("svg:line")
+    //x to the right
+    .attr("x1", parseInt(point.attr("cx")) + (width / divisor * i))
+    .attr("y1", 0)
+    .attr("x2", parseInt(point.attr("cx")) + (width / divisor * i))
+    .attr("y2", height)
+    .attr("stroke-width",strokeWidth)
+    .style("stroke", "rgb(0,0,50)");
+  }
+
+  for (var i = 0; i < ((divisor / 2) + 1); i++) {
+    var myLine = drawing.append("svg:line")
+    //y to the top
+    .attr("x1", 0)
+    .attr("y1", parseInt(point.attr("cy")) - (height / divisor * i))
+    .attr("x2", width)
+    .attr("y2", parseInt(point.attr("cy")) - (height / divisor * i))
+    .attr("stroke-width", strokeWidth)
+    .style("stroke", "rgb(0,0,50)");
+  }
+
+  for (var i = 1; i < ((divisor / 2) + 1); i++) {
+    var myLine = drawing.append("svg:line")
+    //y to the bottom
+    .attr("x1", 0)
+    .attr("y1", parseInt(point.attr("cy")) + (height / divisor * i))
+    .attr("x2", width)
+    .attr("y2", parseInt(point.attr("cy")) + (height / divisor * i))
+    .attr("stroke-width", strokeWidth)
+    .style("stroke", "rgb(0,0,50)");
+  }
+}
