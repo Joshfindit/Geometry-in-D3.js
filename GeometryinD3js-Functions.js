@@ -20,15 +20,6 @@ function point(centreX, centreY, label) {
   return myPoint
 }
 
-function pointArray(centreX, centreY, label, array) {
-  // Allows creating a point with a centre and a label.
-  // An alternate version which adds the point to an already-defined array (such as var pointsArray = [ ]; )
-  // reduces var A = {cx:80, cy:160, label:"A"}; to A = new point( 80, 160, "A");
-  this.cx = centreX;
-  this.cy = centreY;
-  this.label = label;
-  array.push(this);
-}
 
 function circle(point, radius){
   // Simply draws a circle. Does not create variables such as "circle1 = new circle(A, 50)"
