@@ -16,7 +16,7 @@ layout: default
           {% endcomment %}
           <p class="post-meta">#{{ post.sequence }}</p>
         {% elsif site.numbered_posts %}
-          <p class="post-meta">#{{ site.posts | size | minus: step1 | minus: forloop.rindex0 }} of {{ site.posts | size }}</p>
+          <p class="post-meta">#{{ site.posts | size | minus: step1 | minus: forloop.rindex0 }}</p>
         {% else %}
           <p class="post-meta">⠙</p>
         {% endif %}
