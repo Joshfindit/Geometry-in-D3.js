@@ -1,3 +1,5 @@
+const scale = 1000000000; //Allows us to avoid floating point rounding errors
+
 function point(centreX, centreY, label) {
 
   myPoint = drawing.append("circle")
@@ -18,7 +20,7 @@ function circle(centrePoint, radius, colour){
   if (typeof colour == 'undefined'){
     colour = "black";
   }
-  
+
   myCircle = drawing.append("circle")
   .style("stroke", colour)
   .style("fill", "none")
@@ -36,7 +38,7 @@ function circleFilled (centrePoint, radius, colour){
   if (typeof colour == 'undefined'){
     colour = "black";
   }
-  
+
   myFilledCircle = drawing.append("circle")
   .style("stroke", "none")
   .style("fill", colour)
