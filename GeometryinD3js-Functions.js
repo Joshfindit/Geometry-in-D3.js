@@ -12,34 +12,37 @@ function point(centreX, centreY, label) {
   return myPoint
 }
 
-function circle(point, radius, colour){
+function circle(centrePoint, radius, colour){
   // Simply draws a circle. Returns an object such as "circle1 = new circle(A, 50)"
   if (typeof colour == 'undefined'){
     colour = "black";
   }
+  
   myCircle = drawing.append("circle")
   .style("stroke", colour)
   .style("fill", "none")
   .attr("r", radius)
-  .attr("cx", point.attr("cx"))
-  .attr("cy", point.attr("cy"))
+  .attr("cx", centrePoint.attr("cx"))
+  .attr("cy", centrePoint.attr("cy"))
   .attr("label", point.attr("label"))
+  ;
 
   return myCircle;
 }
 
-function circleFilled (point, radius, colour){
-  // Simply draws a circle. Does not create variables such as "circle1 = new circle(A, 50)"
 
+function circleFilled (centrePoint, radius, colour){
+  // Simply draws a circle. Returns an object such as "circle1 = new circleFilled(A, 50)"
   if (typeof colour == 'undefined'){
     colour = "black";
   }
+  
   myFilledCircle = drawing.append("circle")
   .style("stroke", "none")
   .style("fill", colour)
   .attr("r", radius)
-  .attr("cx", point.attr("cx"))
-  .attr("cy", point.attr("cy"))
+  .attr("cx", centrePoint.attr("cx"))
+  .attr("cy", centrePoint.attr("cy"))
   .attr("label", point.attr("label"));
 
   return myFilledCircle;
