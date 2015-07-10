@@ -3,11 +3,12 @@ function point(centreX, centreY, label) {
   myPoint = drawing.append("circle")
   .style("stroke", "none") // Do not draw the line
   .style("fill", "none")   // Do not fill
+  .attr("class", "point")  //Assign the "point" class so we can later grab/filter it
   .attr("r", 0)            //radius = 0
   .attr("cx", centreX)
   .attr("cy", centreY)
   .attr("label", label)    //This is optional.
-                           //It follows geometry textbooks
+  ;                        //It follows geometry textbooks
 
   return myPoint
 }
@@ -44,6 +45,8 @@ function circleFilled (centrePoint, radius, colour){
   .attr("cx", centrePoint.attr("cx"))
   .attr("cy", centrePoint.attr("cy"))
   .attr("label", "Circle".concat(centrePoint.attr("label"))) //This returns "CircleA" if point A has a label of "A"
+  ;
 
   return myFilledCircle;
 }
+
