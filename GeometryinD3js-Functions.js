@@ -24,7 +24,7 @@ function circle(centrePoint, radius, colour){
   .attr("r", radius)
   .attr("cx", centrePoint.attr("cx"))
   .attr("cy", centrePoint.attr("cy"))
-  .attr("label", point.attr("label"))
+  .attr("label", "Circle".concat(centrePoint.attr("label"))) //This returns "CircleA" if point A has a label of "A"
   ;
 
   return myCircle;
@@ -43,7 +43,7 @@ function circleFilled (centrePoint, radius, colour){
   .attr("r", radius)
   .attr("cx", centrePoint.attr("cx"))
   .attr("cy", centrePoint.attr("cy"))
-  .attr("label", point.attr("label"));
+  .attr("label", "Circle".concat(centrePoint.attr("label"))) //This returns "CircleA" if point A has a label of "A"
 
   return myFilledCircle;
 }
