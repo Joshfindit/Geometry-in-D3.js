@@ -7,7 +7,7 @@ baseurl:     "/Geometry-in-D3.js"
 url:         "http://joshfindit.github.io"
 
 # Google analytics
-google_analytics:
+google_analytics: "UA-64986614-1"
 
 # Optional features
 animated:           false
