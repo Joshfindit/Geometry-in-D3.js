@@ -1,3 +1,5 @@
+const scale = 1000000000; //Allows us to avoid floating point rounding errors
+
 function point(centreX, centreY, label) {
 
   myPoint = drawing.append("circle")
