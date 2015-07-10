@@ -2,12 +2,12 @@ function point(centreX, centreY, label) {
 
   myPoint = drawing.append("circle")
   .style("stroke", "none") // Do not draw the line
-  .style("fill", "none") // Do not fill
-  .attr("r", 0)
+  .style("fill", "none")   // Do not fill
+  .attr("r", 0)            //radius = 0
   .attr("cx", centreX)
   .attr("cy", centreY)
-  .attr("label", label) //This is optional.
-                        //It follows geometry textbooks
+  .attr("label", label)    //This is optional.
+                           //It follows geometry textbooks
 
   return myPoint
 }
