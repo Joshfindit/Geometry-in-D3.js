@@ -71,3 +71,16 @@ function circleFilled (centrePoint, radius, colour){
 
   return myFilledCircle;
 }
+
+function distanceBetweenTwoPoints (pointA, pointB) {
+  // Also known as "the distance formula" (a^2 + b^2 = c^2)
+
+  distanceXScaled = ((pointB.attr("cx") *scale) - (pointA.attr("cx") *scale));
+  distanceYScaled = ((pointB.attr("cy") *scale) - (pointA.attr("cy") *scale));
+
+  lineLengthScaled = Math.sqrt(Math.pow(distanceXScaled, 2) + Math.pow(distanceYScaled, 2));
+
+  lineLength = Math.round(lineLengthScaled) / scale;
+
+  return lineLength;
+}
