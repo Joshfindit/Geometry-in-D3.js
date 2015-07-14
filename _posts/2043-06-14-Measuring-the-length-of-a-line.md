@@ -16,7 +16,7 @@ It's also known as the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pytha
 
 It goes like this: <img class="mwe-math-fallback-image-inline tex" alt=" c = \sqrt{a^2 + b^2}. \," src="http://upload.wikimedia.org/math/4/9/a/49a65217b7d35663efc6e558c0ffdba0.png">
 
-If you want to understand how the distance (c) is found, I recommend reading through the linked article.
+If you want to understand how the distance "c" is found, I recommend reading through the linked article.
 
 Following with previous articles, we're going to create a function that accepts two points:
 
